@@ -1,5 +1,5 @@
 # OpenShift Examples - Blue/Green Deployments
-A blue/green deployment is a software deployment strategy that relies on two identical production configurations that alternate between active and inactive. The idea is that you can minimize the downtime of your app during the release process and reduce the chance for failures. If you want to read more, see [martinfowler.com](2). OpenShift has platform provided capabilities for doing advanced software deployment strategies including blue/green.
+A blue/green deployment is a software deployment strategy that relies on two identical production configurations that alternate between active and inactive. The idea is that you can minimize the downtime of your app during the release process and reduce the chance for failures. If you want to read more, see [martinfowler.com][2]. OpenShift has platform provided capabilities for doing advanced software deployment strategies including blue/green.
 
 This git repo contains an intentionally simple example of how you could do a blue/green deployment. You might have already seen some other OpenShift deployment strategies use the deployment configuration features. But this particular example uses the router features in order to patch a specific route to the application.
 
@@ -40,8 +40,8 @@ The parts in action here are:
 * An example containerized web app
 * Key platform components that enable this example
   - container replication and service layer
-	- integrated router (HAProxy)
-	- oc CLI tool
+  - integrated router (HAProxy)
+  - oc CLI tool
 
 
 ## References and other links to check out
@@ -51,7 +51,7 @@ The parts in action here are:
 * https://www.quora.com/What-is-blue-green-deployment
 
 
-## Challenges for Blue/Green deployments (all [borrowed from Christian Posta](1))
+## Challenges for Blue/Green deployments (all [borrowed from Christian Posta][1])
 * Long running transactions in the green environment. When you switch over to blue, you have to gracefully handle those outstanding transactions as well as the new ones. This also can become troublesome if your DB backends cannot handle this (see below)
 * Enterprise deployments are not typically amenable to “microservice” style deployments – that is, you may have a hybrid of microservice style apps, and some traditional, difficult-to-change-apps working together. Coordinating between the two for a blue-green deployment can still lead to downtime
 * Database migrations can get really tricky and would have to be migrated/rolledback alongside the app deployments. There are good tools and techniques for doing this, but in an environment with traditional RDBMS, NoSQL, and file-system backed DBs, these things really need to be thought through ahead of time; blindly saying you’re doing Blue Green deployments doesn’t help anything – actually could hurt.
